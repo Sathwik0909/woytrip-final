@@ -231,9 +231,6 @@
 //   );
 // };
 
-
-
-
 // import React, { useRef, useState } from "react";
 // import { FaBus, FaHotel, FaWhatsapp } from "react-icons/fa";
 // import {
@@ -440,10 +437,6 @@
 //   );
 // };
 
-
-
-
-
 import React, { useRef } from "react";
 import { FaBus, FaHotel, FaWhatsapp } from "react-icons/fa";
 import {
@@ -569,6 +562,13 @@ export const DestinationCardsSection: React.FC<Props> = ({ cards }) => {
                 <h3 className="text-xl font-bold text-gray-800 mb-1">
                   {card.title}
                 </h3>
+
+                <div className="flex items-center justify-between mt-1 mb-1">
+                  <span className="text-lg font-bold text-blue-600">
+                  ₹{card.price}{" "}
+                    <span className="text-sm text-gray-500">/ person</span>
+                  </span>
+                </div>
                 <div className="flex items-center gap-2 text-blue-600">
                   <FaBus className="text-sm" />
                   <span className="text-sm font-medium">{card.location}</span>

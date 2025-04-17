@@ -2,6 +2,7 @@ export interface CardType {
   _id: string;
   title: string;
   location: string;
+  price: string,
   images: {
     url: string;
     publicId: string;

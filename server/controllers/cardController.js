@@ -16,7 +16,7 @@ cloudinary.config({
 // @route   POST /api/cards
 // @access  Private
 export const createCard = catchAsync(async (req, res, next) => {
-  const { title, location, features, popular } = req.body;
+  const { title, location, features, popular,price } = req.body;
   const uploadedImages = req.uploadedImages;
 
   if (!title || !location || !uploadedImages) {
@@ -35,6 +35,7 @@ export const createCard = catchAsync(async (req, res, next) => {
   const card = await Card.create({
     title,
     location,
+    price,
     images: uploadedImages,
     features: parsedFeatures,
     popular: popular === 'true' || popular === true
@@ -93,6 +94,7 @@ export const updateCard = catchAsync(async (req, res, next) => {
   card.title = req.body.title || card.title;
   card.location = req.body.location || card.location;
   card.popular = req.body.popular === "true";
+  card.price = req.body.price || card.price; 
   
   try {
     card.features = JSON.parse(req.body.features);

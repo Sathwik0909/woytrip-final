@@ -23,6 +23,7 @@ const CardForm = ({
   const [formData, setFormData] = useState({
     title: "",
     location: "",
+    price:"",
     images: [] as File[],
     features: {
       video: false,
@@ -46,6 +47,7 @@ const CardForm = ({
       setFormData({
         title: selectedCard.title,
         location: selectedCard.location,
+        price:selectedCard.price,
         images: [],
         features: selectedCard.features,
         popular: selectedCard.popular,
@@ -100,6 +102,7 @@ const CardForm = ({
       title: "",
       location: "",
       images: [],
+      price:"",
       features: {
         video: false,
         meals: false,
@@ -131,6 +134,7 @@ const CardForm = ({
       // Append core fields
       formPayload.append("title", formData.title);
       formPayload.append("location", formData.location);
+      formPayload.append("price", formData.price);
       formPayload.append("popular", formData.popular.toString());
       formPayload.append("features", JSON.stringify(formData.features));
   
@@ -241,6 +245,26 @@ const CardForm = ({
                 }
               />
             </div>
+
+
+            <div>
+    <label className="block text-sm font-medium text-gray-700 mb-2">
+      Price per Person
+    </label>
+    <input
+      type="number"
+      required
+      className="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+      value={formData.price}
+      onChange={(e) =>
+        setFormData(prev => ({ 
+          ...prev, 
+          price: e.target.value
+        }))
+      }
+      min="0"
+    />
+  </div>
           </div>
 
           {/* Updated Image Upload Section */}
